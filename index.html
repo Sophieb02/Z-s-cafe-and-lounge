@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Find Your Z Vibe | Z's Cafe & Lounge</title>
+
+  <style>
+    :root {
+      --cream: #080808;
+      --ink: #ffffff;
+      --olive: #526bff;
+      --pink: #171d42;
+      --line: #526bff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #080808;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      left: -15vw;
+      top: 13vh;
+      width: 130vw;
+      height: 35vh;
+      background: #526bff;
+      border-radius: 50%;
+      transform: rotate(-14deg);
+      opacity: 0.12;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px clamp(20px, 6vw, 90px);
+      border-bottom: 3px solid #526bff;
+    }
+
+    .logo {
+      font-family: Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+      padding: 45px 22px 90px;
+    }
+
+    .panel {
+      min-height: 550px;
+      padding: clamp(28px, 6vw, 70px);
+      background: #101010;
+      border: 1px solid #526bff;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px #0008;
+    }
+
+    .eyebrow {
+      color: #526bff;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 30px 0;
+      font-size: clamp(48px, 8vw, 86px);
+      line-height: 1.02;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.1;
+    }
+
+    p {
+      max-width: 550px;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 17px 30px;
+      background: #526bff;
+      color: #ffffff;
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .button:hover {
+      background: #344de0;
+    }
+
+    .secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #8392ff;
+    }
+
+    .secondary:hover,
+    .secondary:focus-visible {
+      background: #526bff;
+      color: #ffffff;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 32px 0;
+    }
+
+    .option {
+      min-height: 95px;
+      padding: 23px;
+      background: #1b1b1b;
+      color: #ffffff;
+      border: 1px solid #8392ff;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .option:hover,
+    .option:focus-visible {
+      background: #526bff;
+      color: #ffffff;
+      border-color: #ffffff;
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+
+    .progress {
+      height: 5px;
+      margin-bottom: 45px;
+      overflow: hidden;
+      background: #303030;
+      border-radius: 8px;
+    }
+
+    .progress > div {
+      height: 100%;
+      background: #526bff;
+      transition: width 0.2s;
+    }
+
+    .result {
+      margin: 28px 0;
+      padding: 30px;
+      background: #171d42;
+      color: #ffffff;
+      border-left: 8px solid #526bff;
+      border-radius: 4px;
+    }
+
+    .result small {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .result strong {
+      display: block;
+      margin: 12px 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 27px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .note {
+      margin-top: 22px;
+      color: #c7c7c7;
+      font-size: 12px;
+    }
+
+    .decor {
+      margin: 25px 0;
+      color: #526bff;
+      font-size: 80px;
+    }
+
+    footer {
+      padding: 25px;
+      color: #c7c7c7;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    @media (max-width: 550px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        min-height: 600px;
+      }
+
+      header {
+        padding: 20px;
+      }
+
+      .tag {
+        font-size: 9px;
+      }
+
+      h1 {
+        font-size: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      Z's<span style="color: var(--olive)">.</span>
+    </div>
+
+    <div class="tag">
+      Cafe & Lounge · Find your vibe
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="app" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    MADE FOR EVERY VERSION OF YOU · Z'S CAFE & LOUNGE
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        q: "What kind of day are you having?",
+        a: [
+          ["Taking it slow", "slow"],
+          ["Up late, feeling inspired", "night"],
+          ["Ready to see everyone", "social"],
+          ["Lost in my thoughts", "dream"]
+        ]
+      },
+      {
+        q: "Pick your ideal café corner.",
+        a: [
+          ["A sunny window seat", "slow"],
+          ["A dimly lit lounge booth", "night"],
+          ["The big table with friends", "social"],
+          ["A quiet corner with a book", "dream"]
+        ]
+      },
+      {
+        q: "What sounds like your perfect plan?",
+        a: [
+          ["A long, peaceful morning", "slow"],
+          ["An after-dark conversation", "night"],
+          ["A spontaneous hangout", "social"],
+          ["A solo creative afternoon", "dream"]
+        ]
+      },
+      {
+        q: "Choose your soundtrack.",
+        a: [
+          ["Acoustic & soft jazz", "slow"],
+          ["Alternative R&B & soul", "night"],
+          ["Disco & feel-good pop", "social"],
+          ["Dream pop & lo-fi", "dream"]
+        ]
+      },
+      {
+        q: "What do you want your drink to say?",
+        a: [
+          ["Comfort is everything", "slow"],
+          ["Keep it bold", "night"],
+          ["Make it fun", "social"],
+          ["Something a little different", "dream"]
+        ]
+      }
+    ];
+
+    const results = {
+      slow: {
+        title: "The Slow Morning",
+        emoji: "☀",
+        drink: "Vanilla Latte",
+        music: "Soft indie · Acoustic · Mellow jazz",
+        desc: "You find magic in the little things. Your perfect Z’s moment is warm, unhurried, and full of comfort.",
+        url: "https://open.spotify.com/playlist/6NYPbQRCph2Ezg8vqr5ehy"
+      },
+
+      night: {
+        title: "The Night Owl",
+        emoji: "☾",
+        drink: "Iced Americano",
+        music: "Alternative R&B · Late-night soul",
+        desc: "You come alive after sunset. Your Z’s vibe is deep conversations, moody lights, and bold flavors.",
+        url: "https://open.spotify.com/playlist/3C1hzWbEcd2IJl631D77Mr"
+      },
+
+      social: {
+        title: "The Social Butterfly",
+        emoji: "✳",
+        drink: "Strawberry Matcha",
+        music: "Upbeat pop · Disco · Funk",
+        desc: "You bring the energy. Your Z’s moment is colorful, spontaneous, and better when shared.",
+        url: "https://open.spotify.com/playlist/77eqNNF31672masWWG4IP2"
+      },
+
+      dream: {
+        title: "The Daydreamer",
+        emoji: "✿",
+        drink: "Honey Oat Latte",
+        music: "Dream pop · Lo-fi · Ambient",
+        desc: "You’re in your own beautiful world. Your Z’s moment is thoughtful, creative, and a little dreamy.",
+        url: "https://open.spotify.com/playlist/6c02zJjwdXTf4ANtOp9tiM"
+      }
+    };
+
+    let index = -1;
+
+    let scores = {
+      slow: 0,
+      night: 0,
+      social: 0,
+      dream: 0
+    };
+
+    const app = document.getElementById("app");
+
+    function home() {
+      index = -1;
+
+      app.innerHTML = `
+        <div class="eyebrow">OLD SOUL, NEW RITUALS</div>
+
+        <div class="decor">✳</div>
+
+        <h1>
+          FIND YOUR<br>
+          <i>Z VIBE.</i>
+        </h1>
+
+        <p>
+          There's a Z for every version of you. Answer five little
+          questions to discover your café personality, signature drink,
+          and perfect soundtrack.
+        </p>
+
+        <button class="button" id="start">
+          Find my vibe →
+        </button>
+
+        <p class="note">
+          5 questions · About 1 minute · No signup needed
+        </p>
+      `;
+
+      document.getElementById("start").onclick = () => {
+        scores = {
+          slow: 0,
+          night: 0,
+          social: 0,
+          dream: 0
+        };
+
+        index = 0;
+        renderQuestion();
+      };
+    }
+
+    function renderQuestion() {
+      const currentQuestion = questions[index];
+
+      app.innerHTML = `
+        <div class="progress">
+          <div style="width: ${index / questions.length * 100}%"></div>
+        </div>
+
+        <div class="eyebrow">
+          Question ${index + 1} of ${questions.length}
+        </div>
+
+        <h2>${currentQuestion.q}</h2>
+
+        <div class="options">
+          ${currentQuestion.a.map((answer, answerIndex) => `
+            <button class="option" data-i="${answerIndex}">
+              ${answer[0]} ↗
+            </button>
+          `).join("")}
+        </div>
+
+        <button class="button secondary" id="back">
+          ← Back
+        </button>
+      `;
+
+      app.querySelectorAll(".option").forEach(button => {
+        button.onclick = () => {
+          const answerIndex = Number(button.dataset.i);
+          const category = currentQuestion.a[answerIndex][1];
+
+          scores[category]++;
+          index++;
+
+          if (index === questions.length) {
+            showResult();
+          } else {
+            renderQuestion();
+          }
+        };
+      });
+
+      document.getElementById("back").onclick = () => {
+        if (index === 0) {
+          home();
+        } else {
+          index--;
+          renderQuestion();
+        }
+      };
+    }
+
+    function showResult() {
+      const key = Object.keys(scores).sort(
+        (a, b) => scores[b] - scores[a]
+      )[0];
+
+      const result = results[key];
+
+      app.innerHTML = `
+        <div class="eyebrow">
+          Your Z's personality
+        </div>
+
+        <div class="decor">
+          ${result.emoji}
+        </div>
+
+        <h2>
+          You are<br>
+          <i>${result.title}.</i>
+        </h2>
+
+        <p>${result.desc}</p>
+
+        <div class="result">
+          <small>Your signature order</small>
+          <strong>${result.drink}</strong>
+
+          <small>Your soundtrack</small>
+          <strong style="font-size: 20px">
+            ${result.music}
+          </strong>
+        </div>
+
+        <div class="actions">
+          <a
+            class="button"
+            href="${result.url}"
+            target="_blank"
+            rel="noopener"
+          >
+            ♫ Open Spotify ↗
+          </a>
+
+          <button class="button secondary" id="share">
+            Share my result
+          </button>
+
+          <button class="button secondary" id="restart">
+            Retake quiz
+          </button>
+        </div>
+      `;
+
+      document.getElementById("restart").onclick = home;
+
+      document.getElementById("share").onclick = async () => {
+        const shareText =
+          `I'm ${result.title} at Z's Cafe & Lounge! ` +
+          `My drink: ${result.drink}.`;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "My Z Vibe",
+              text: shareText,
+              url: location.href
+            });
+          } catch (error) {
+            // The share window was closed.
+          }
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(shareText);
+          document.getElementById("share").textContent = "Copied!";
+        } else {
+          alert(shareText);
+        }
+      };
+    }
+
+    home();
+  </script>
+</body>
+</html>
